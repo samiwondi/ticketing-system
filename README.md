@@ -1,29 +1,24 @@
-Ticketing System – Phase 1, Task A
+Ticketing System – Phase 1, Task B
 
 ## Overview
 
-This is the foundational Money & Currency module for the CLI Ticketing System. It provides a type-safe, immutable value object for handling monetary amounts with currency support.
+This is the foundational Seat & SeatComparator module for the CLI Ticketing System. It provides a type-safe, immutable value object for handling Seats with comparing support.
 
 ## What's Included
 
-### Currency Enum
+### Seat Comparator
 
-A clean list of supported currencies:
-- ETB (Ethiopian Birr)
-- USD (US Dollar)
-- EUR (Euro)
-- GBP (British Pound)
-- CAD (Canadian Dollar)
-- SAR (Saudi Riyal)
-- UAD (UAE Dirham)
+Compare Based on
+-Section
+-Row
+-Number
 
-### Money Record
+### Seat Record
 
-A Java Record representing a monetary amount with:
+A Java Record representing a seat with:
 - Immutable – cannot be changed after creation.
-- Validation – throws IllegalArgumentException if the amount is negative.
-- Addition – safely adds two Money objects only if they share the same currency.
-- Nice toString() – prints as 10.50 USD.
+- Validation – throws IllegalArgumentException if the Section is not a letter and the row/number is negative.
+- Nice toString() – prints as Seat: A-1-1.
 
 ## Project Structure (Current State)
 
@@ -35,14 +30,20 @@ ticketing-cli/
 │   │           └── ticketing/
 │   │               ├── enums/
 │   │               │   └── Currency.java
-│   │               └── model/
-│   │                   └── Money.java
+│   │               ├── model/
+│   │               │     └── Money.java
+|   |               │    └── Seat.java
+│   │               └── comparator/
+│   │                    └── SeatComparator.java
 │   └── test/
 │       └── java/
 │           └── com/
 │               └── ticketing/
-│                   └── model/
-│                       └── MoneyTest.java
+│                   ├── model/
+│                   │    └── MoneyTest.java
+│                   └── comparator/
+│                       └── SeatComparatorTest.java
+│
 ├── .gitignore
 ├── pom.xml
 └── README.md
@@ -87,7 +88,7 @@ Deliverables:
 
 Status: Done
 
-**Task B – Seat Class + SeatComparator**
+**Task B – Seat Class + SeatComparator (COMPLETED)**
 
 Goal: Create a seat model and a comparator that sorts seats by section -> row -> number.
 
@@ -97,9 +98,9 @@ Step-by-Step:
 
 1. Create Seat.java in src/main/java/com/ticketing/model/
 
-2. Create SeatComparator.java in src/main/java/com/ticketing/model/
+2. Create SeatComparator.java in src/main/java/com/ticketing/comparator/
 
-3. Create SeatComparatorTest.java in src/test/java/com/ticketing/model/
+3. Create SeatComparatorTest.java in src/test/java/com/ticketing/comparator/
 
 4. Run the Test
 
@@ -151,16 +152,16 @@ Step-by-Step:
 | Task | Description | Status |
 | :--- | :--- | :--- |
 | A | Money & Currency | Done |
-| B | Seat + Comparator | Pending |
+| B | Seat + Comparator | Done |
 | C | In-Memory Data Store | Pending |
 | D | JSON Persistence | Pending |
 | E | CLI Menu | Pending |
 
 ## Next Steps
 
-1. Complete Task B – Seat class + Comparator
+1. Complete Task C – InMemoryDataStore
 2. Commit and push to GitHub
-3. Continue with Tasks C, D, and E
+3. Continue with Tasks D and E
 4. Once all tasks are complete, move to Phase 2 (Concurrency, Caching, Patterns)
 
 ## License
