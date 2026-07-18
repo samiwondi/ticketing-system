@@ -1,6 +1,6 @@
 package com.ticketing.model;
 
-public record Seat(String section, int row, int number) {
+public record Seat(Long id, Long venueId, String section, int row, int number) {
     
     public Seat {
         if(section == null || section.trim().isEmpty()) {

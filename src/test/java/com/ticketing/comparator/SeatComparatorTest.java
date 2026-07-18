@@ -14,7 +14,7 @@ public class SeatComparatorTest {
 
     @Test
     void testValidSeatCreation() {
-        Seat seat = new Seat("A",1,1);
+        Seat seat = new Seat(null,null,"A",1,1);
         assertEquals("A", seat.section());
         assertEquals(1, seat.row());
         assertEquals(1, seat.number());
@@ -23,46 +23,46 @@ public class SeatComparatorTest {
     @Test
     void testInvalidSectionThrows() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat("",1,1);
+            new Seat(null,null,"",1,1);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat(null,1,1);
+            new Seat(null,null,null,1,1);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat("1",1,1);
+            new Seat(null,null,"1",1,1);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat("A1",1,1);
+            new Seat(null,null,"A1",1,1);
         });
     }
 
     @Test
     void testInvalidRowThrows() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat("A",-5,1);
+            new Seat(null,null,"A",-5,1);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat("Z",0,1);
+            new Seat(null,null,"Z",0,1);
         });
     }
 
     @Test
     void testInvalidNumberThrows() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat("A",1,-5);
+            new Seat(null,null,"A",1,-5);
         });
         assertThrows(IllegalArgumentException.class, () -> {
-            new Seat("A",1,0);
+            new Seat(null,null,"A",1,0);
         });
     }
 
     @Test
     void testComparatorSortsCorrectly() {
         List<Seat> seats = Arrays.asList(
-            new Seat("B", 2, 3),
-            new Seat("A", 1, 1),
-            new Seat("A", 2, 1),
-            new Seat("B", 1, 2)
+            new Seat(null,null,"B", 2, 3),
+            new Seat(null,null, "A", 1, 1),
+            new Seat(null,null,"A", 2, 1),
+            new Seat(null,null,"B", 1, 2)
         );
         Collections.sort(seats, new SeatComparator());
         
